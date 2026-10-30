@@ -29,6 +29,5 @@ This means the following are to accept :
 - You will probably have bugs, issues, error, etc. <!-- "probably" being the keyword! -->
 - You *can* get IP banned off Steam (Although this is likely to simply not happen)
 - CF bypassing is not yet possible
-- YOU WILL NOT LEAK ANYTHING.
 
 Please report anything needed by creating an Issue.
