@@ -49,6 +49,7 @@ def check_id(url, appid=None):
         driver.quit()
         return success
     else:
+        # TL;DR of what follows : I am a very bad dev that couldn't make it work because steamdb bans me, I'm sorry steamdb, and uhhh... Whatever the following code is ass and I'll never finish it, enjoy  reading my holy stupidly stupid mistakes (weren't this supposed to be a "TL;DR"? :raised_eyebrow:)
         def check_validity():
             # if "Error 404 · SteamDB" in driver.title or "Error · SteamDB" in driver.title or "Unknown" in driver.title:
             if driver.title == "Error 404 · SteamDB" or driver.title == "Error · SteamDB":

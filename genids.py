@@ -7,9 +7,7 @@ ua = UserAgent()
 def save_id(id):
     try:
         with open("ids.txt", "a+") as f:
-            data = f.read()
             f.write(str(id)+"\n")
-            f.close()
         print(f"Saved ID : {id}")
     except Exception as e:
         print(f"Could not save ID : {e}")
