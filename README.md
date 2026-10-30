@@ -17,6 +17,7 @@ If you do so, feel free to PR or open an Issue so that it gets fixed <3
 
 ## Why this tool?
 Well, if you need ways to get your games cheaper :P <!-- HE MEANS SOMETHING THAT STEAM DOESN'T LIKES! I'M TELLING MOM ABOUT THAT! -->
+
 OR if you need true datas for whatever reasons (RNG, Statistics, or whatever...)
 
 ## IMPORTANT
