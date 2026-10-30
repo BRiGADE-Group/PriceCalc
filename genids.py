@@ -1,8 +1,7 @@
 import random, sys
 from checkid import *
-from fake_useragent import UserAgent
+import time
 from selenium.common.exceptions import TimeoutException
-ua = UserAgent()
 
 def save_id(id):
     try:
