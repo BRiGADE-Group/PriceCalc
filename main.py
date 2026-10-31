@@ -2,10 +2,65 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import filedialog as fd
 import requests, time, asyncio, threading
+import os, sys ,pygame
 
 class cfg():
     about_txt = "App Name : PriceCalc\nApp Version : v1.0\nAuthor : 0xSenko\nContributor(s) : Oxyru\nMessage : Greetz to mah gamers fellas!"
     APPIDS = []
+
+class AutoLoopPlayer:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Music Player")
+        self.root.geometry("280x100")
+        self.root.resizable(False, False)
+
+        pygame.mixer.init()
+
+        script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+        self.track_path = os.path.join(script_dir, "music.mp3")
+        self.is_playing = False
+
+        tk.Label(self.root, font=("Arial", 9, "italic"), text="Now Playing : sacio - cheeze surfer [2016]\n@djodin2194 on YT!").pack()
+
+        self.status_label = tk.Label(self.root, font=("Arial", 9, "italic"), pady=8)
+        # self.status_label.pack()
+
+        self.btn = tk.Button(
+            self.root, 
+            text="⏸ Pause", 
+            font=("Arial", 11, "bold"), 
+            width=12, 
+            command=self.toggle_playback,
+            bg="#f44336",
+            fg="white"
+        )
+        self.btn.pack(pady=5)
+
+        self.auto_start()
+
+    def auto_start(self):
+        if os.path.exists(self.track_path):
+            try:
+                pygame.mixer.music.load(self.track_path)
+                pygame.mixer.music.play(loops=-1) # -1 loops forever
+                self.is_playing = True
+                self.status_label.config(text="Looping: music.mp3")
+            except Exception as e:
+                self.status_label.config(text="Error loading music file.")
+        else:
+            self.status_label.config(text="Error: Place 'music.mp3' in this folder!")
+            self.btn.config(text="❌ No File", bg="#555555", state=tk.DISABLED)
+
+    def toggle_playback(self):
+        if not self.is_playing:
+            pygame.mixer.music.unpause()
+            self.is_playing = True
+            self.btn.config(text="⏸ Pause", bg="#f44336")
+        else:
+            pygame.mixer.music.pause()
+            self.is_playing = False
+            self.btn.config(text="▶ Play", bg="#2196F3")
 
 def load_appids(filepath):
     try:
@@ -171,5 +226,11 @@ def window():
 
     root.mainloop()
 
+def musicplayer():
+    mp = tk.Tk()
+    app = AutoLoopPlayer(mp)
+    mp.mainloop()
+
 if __name__ == "__main__":
+    threading.Thread(target=musicplayer, daemon=True).start()
     window()
